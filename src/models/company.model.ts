@@ -5,11 +5,20 @@
  */
 
 export class CompanyModel {
+    private id: number;
     private name: string;
     private address: string;
     private zipcode: string;
     private city: string;
 
+    public getId(): number {
+        return this.id;
+    }
+
+    public setId(id: number) {
+        this.id = id;
+    }
+    
     /**
      * @param void
      * @return string L'adresse de l'entreprise
