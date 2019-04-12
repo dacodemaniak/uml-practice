@@ -18,7 +18,7 @@ export class CompanyModel {
     public setId(id: number) {
         this.id = id;
     }
-    
+
     /**
      * @param void
      * @return string L'adresse de l'entreprise
@@ -61,9 +61,9 @@ export class CompanyModel {
     }
 
     public toString(): string {
-        let output: string = '<strong>' + this.name + '</strong><br>';
+        let output: string = '<p><strong>' + this.name + '</strong><br>';
         output += this.address + '<br>';
-        output += this.zipcode + ' <em>' + this.city + '</em>';
+        output += this.zipcode + ' <em>' + this.city + '</em></p>';
 
         return output;
     }

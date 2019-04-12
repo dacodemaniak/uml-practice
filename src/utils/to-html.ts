@@ -4,7 +4,7 @@ export class ToHtml {
     public toPage(object: any) {
         const htmlPlaceHolder: any = document.querySelector('[' + ToHtml.placeholder + ']');
         let content: string = htmlPlaceHolder.innerHTML;
-        content += object.toString() + '<br>';
+        content += object.toString();
         htmlPlaceHolder.innerHTML = content;
     }
 }
