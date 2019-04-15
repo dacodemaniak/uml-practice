@@ -1,0 +1,18 @@
+/**
+* CSS rules for myApp
+**/
+[myApp] h2 {
+    color: rgba(240, 118, 118, 1);
+}
+
+[myApp] h2 i {
+    display: inline-block;
+    color: rgb(238, 28, 28, .5);
+    transform: scale(1) rotate(0);
+    transition: all 0.3s 0s ease-in;
+}
+
+[myApp] h2 i:hover {
+    color: rgb(238, 28, 28, 1);
+    transform: scale(1.2) rotate(180deg);
+}

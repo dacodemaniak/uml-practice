@@ -5,6 +5,7 @@ export class ToHtml {
         const htmlPlaceHolder: any = document.querySelector('[' + ToHtml.placeholder + ']');
         let content: string = htmlPlaceHolder.innerHTML;
         content += object.toString();
-        htmlPlaceHolder.innerHTML = content;
+        htmlPlaceHolder.innerHTML = content;   
     }
+
 }
