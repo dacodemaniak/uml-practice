@@ -56,7 +56,7 @@
            // Enlever l'attribut disabled du bouton +
            _manageBtn($('#increase-qty'), false);
 
-           // La valeur est-elle égale au maximum ?
+           // La valeur est-elle égale au minimum ?
            if (newVal === minVal) {
                _manageBtn($(this));
 
