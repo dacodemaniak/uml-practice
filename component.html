@@ -7,6 +7,8 @@
         <title>Mon Composant</title>
 
         <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./assets/styles.css">
+        <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css">
     </head>
 
     <body>
@@ -39,12 +41,22 @@
                 <button 
                     class="btn btn-outline-primary" 
                     type="button" 
-                    id="increase-qty">+</button>
+                    id="increase-qty"
+                >+</button>
             </div>
+        </div>
+
+        <!-- Messages utilisateur -->
+        <div class="alert alert-warning alert-dismissible fade show no-display" role="alert">
+            <strong>Attention !</strong> <span class="message"></span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
 
         <!-- Intégration des ressources javascript -->
         <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="./assets/my-counter.js"></script>
     </body>
 

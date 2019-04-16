@@ -9,28 +9,95 @@
  $('#increase-qty').on(
      'click',
      function(event) {
-        // Déjà, je vais essayer de lire la valeur du champ de saisie (input)
-        const inputField = $('#quantity');
+        _makeMessageDisapear();
 
         // Récupérer la valeur max autorisée : data-max=n
-        const maxVal = parseInt(inputField.data('max'));
+        const maxVal = parseInt($(this).parent().prev('input').data('max'));
 
         // Introduire la contrainte fonctionnelle : newVal < maxVal... sinon... NOOP
-        if (parseInt(inputField.val()) < maxVal) {
+        if (_getValue() < maxVal) {
             // Incrémenter la valeur de 1
-            let newVal = parseInt(inputField.val()) + 1;
+            let newVal = counter(_getValue());
 
             // Afficher dans l'interface la nouvelle valeur
-            inputField.val(newVal);
+            $(this).parent().prev('input').val(newVal);
 
-            // TODO : Ne pas oublier d'activer le bouton -
+            // Enlever l'attribut disabled du bouton -
+            _manageBtn($('#decrease-qty'), false);
+
+            // La valeur est-elle égale au maximum ?
+            if (newVal === maxVal) {
+                _manageBtn($(this));
+
+                // Affichage du message
+                _manageMessage('Vous avez atteint la limite maximum');
+            }
         }
-        // TODO : Afficher un message si maximum atteint
-        // TODO : Désactiver le bouton + si maximum atteint
-
      }
  );
 
+ // Gestionnaire d'événement sur le bouton + (id=increase-qty)
+ $('#decrease-qty').on(
+    'click',
+    function(event) {
+        _makeMessageDisapear();
+
+       // Le minimum autorisé est par défaut = à 1
+       const minVal = 1;
+
+       // Introduire la contrainte fonctionnelle : newVal < maxVal... sinon... NOOP
+       if (_getValue() > minVal) {
+           // Décrémenter la valeur de 1
+           let newVal = counter(_getValue(), false);
+
+           // Afficher dans l'interface la nouvelle valeur
+           $(this).parent().next('input').val(newVal);
+
+           // Enlever l'attribut disabled du bouton +
+           _manageBtn($('#increase-qty'), false);
+
+           // La valeur est-elle égale au maximum ?
+           if (newVal === minVal) {
+               _manageBtn($(this));
+
+               // Affichage du message
+               _manageMessage('Vous avez atteint la limite minimum');
+           }
+       }
+    }
+);
+
+// Intercepte l'événement "close" de l'alerte Bootstrap
+//  et n'exécute pas l'action par défaut... mais ma propre méthode
+$('[role="alert"]').on(
+    'close.bs.alert',
+    function(event) {
+        event.preventDefault();
+        _makeMessageDisapear();
+    }
+);
+
+const _getValue = function() {
+    return parseInt($('#quantity').val());
+}
  const counter = function(value, increase = true) {
     return increase ? parseInt(value) + 1 : parseInt(value) - 1;
  }
+
+ const _manageBtn = function(button, doDisable = true) {
+     if (doDisable) {
+         button.attr('disabled', 'disabled');
+     } else {
+         button.removeAttr('disabled');
+     }
+ }
+
+ const _manageMessage = function(message) {
+    $('[role="alert"] span.message').html(message);
+    $('[role="alert"]').show();
+ }
+
+ const _makeMessageDisapear = function() {
+    $('[role="alert"]').hide();
+ }
+
