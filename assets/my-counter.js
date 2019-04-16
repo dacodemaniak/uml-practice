@@ -93,11 +93,31 @@ const _getValue = function() {
  }
 
  const _manageMessage = function(message) {
-    $('[role="alert"] span.message').html(message);
-    $('[role="alert"]').show();
+    const alert = $('[role="alert"]');
+    alert.children('span.message').html(message);
+
+    alert
+        .removeClass('no-display')
+        .addClass('animated')
+        .addClass('bounceIn');
  }
 
  const _makeMessageDisapear = function() {
-    $('[role="alert"]').hide();
+    const alert = $('[role="alert"]');
+    if (!alert.hasClass('no-display')) {
+        alert.removeClass('bounceIn')
+         .addClass('bounceOut');
+
+        setTimeout(
+            () => { 
+                alert
+                    .addClass('no-display')
+                    .removeClass('animated')
+                    .removeClass('bounceOut')
+            },
+            1500
+        );
+    }
+
  }
 
