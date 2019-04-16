@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,user-scalable=no">
+        
+        <title>Mon Composant</title>
+
+        <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    </head>
+
+    <body>
+
+        <!-- Composant Counter : présentation -->
+        <div class="input-group mb-3">
+            <!-- Bouton avant la zone de saisie -->
+            <div class="input-group-prepend">
+                <button 
+                    class="btn btn-outline-primary" 
+                    type="button" 
+                    id="decrease-qty"
+                    disabled
+                >-</button>
+            </div>
+
+            <!-- Zone de saisie : attribut data-max custom -->
+            <input 
+                type="text"
+                class="form-control" 
+                placeholder="Veuillez saisir une quantité"
+                value="1"
+                data-max="10"
+                id="quantity"
+                readonly 
+            >
+            
+            <!-- Bouton après la zone de saisie -->
+            <div class="input-group-append">
+                <button 
+                    class="btn btn-outline-primary" 
+                    type="button" 
+                    id="increase-qty">+</button>
+            </div>
+        </div>
+
+        <!-- Intégration des ressources javascript -->
+        <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="./assets/my-counter.js"></script>
+    </body>
+
+</html>
