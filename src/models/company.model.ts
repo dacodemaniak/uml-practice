@@ -61,7 +61,7 @@ export class CompanyModel {
     }
 
     public toString(): string {
-        let output: string = '<div class="col-12">';
+        let output: string = '<div class="col-12 click" data-rel="' + this.id + '">';
         output += '<h2><i class="icon-office"></i> ' + this.name + '</h2>';
         output += this.address + '<br>';
         output += this.zipcode + ' <em>' + this.city + '</em></div>';

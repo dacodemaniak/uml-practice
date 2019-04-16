@@ -16,3 +16,14 @@
     color: rgb(238, 28, 28, 1);
     transform: scale(1.2) rotate(180deg);
 }
+
+/**
+* Classe spécifique pour mise en subrillance des sociétés
+**/
+.selected {
+    background-color: rgba(240, 118, 118, 1);
+}
+
+.company ul {
+    display: none;
+}

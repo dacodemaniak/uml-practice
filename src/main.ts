@@ -1,6 +1,8 @@
 import { CompanyModel } from './models/company.model';
 import { ToHtml } from './utils/to-html';
 
+import * as $ from 'jquery'
+import { HomeModule } from './modules/home/home-module';
 /**
  * @name main
  * @desc Point d'entrée dans l'application
@@ -10,6 +12,7 @@ import { ToHtml } from './utils/to-html';
 
  // Créer une instance de la classe CompanyModel
  const aelion: CompanyModel = new CompanyModel();
+ aelion.setId(1);
  aelion.setName('Aélion');
  aelion.setAddress('95 chemin de Gabardie');
  aelion.setZipCode('31000');
@@ -17,6 +20,7 @@ import { ToHtml } from './utils/to-html';
 
  // Création d'une autre instance de classe
  const cap: CompanyModel = new CompanyModel();
+ cap.setId(2);
  cap.setName('Cap\'Gemini');
  cap.setAddress('rue de la Mort qui Tue');
  cap.setZipCode('31600');
@@ -30,3 +34,6 @@ import { ToHtml } from './utils/to-html';
  const toHtml = new ToHtml();
  toHtml.toPage(aelion);
  toHtml.toPage(cap);
+
+ // Instancie le module Home
+ const home: HomeModule = new HomeModule();
