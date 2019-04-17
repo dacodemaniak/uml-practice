@@ -34,6 +34,6 @@ import { HomeModule } from './modules/home/home-module';
  const toHtml = new ToHtml();
  toHtml.toPage(aelion);
  toHtml.toPage(cap);
-
+ 
  // Instancie le module Home
  const home: HomeModule = new HomeModule();

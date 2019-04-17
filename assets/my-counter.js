@@ -80,9 +80,10 @@ $('[role="alert"]').on(
 const _getValue = function() {
     return parseInt($('#quantity').val());
 }
- const counter = function(value, increase = true) {
+
+const counter = function(value, increase = true) {
     return increase ? parseInt(value) + 1 : parseInt(value) - 1;
- }
+}
 
  const _manageBtn = function(button, doDisable = true) {
      if (doDisable) {
