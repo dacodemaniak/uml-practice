@@ -12,4 +12,12 @@ export abstract class Repository<T> {
     public abstract remove(object: T): void;
 
     public abstract get(id: number): T;
+
+    /**
+     * Méthode concrète d'une classe abstraite...
+     * @return number Nombre d'éléments de la collection
+     */
+    public getSize(): number {
+        return this.repository.size;
+    }
 }

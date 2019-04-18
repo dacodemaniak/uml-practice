@@ -1,3 +1,6 @@
+import { OutputInterface } from "src/utils/output-interface";
+import { AllStrategy } from "./strategies/all-strategy";
+
 /**
  * @name CompanyModel
  * @author Aélion
@@ -11,12 +14,24 @@ export class CompanyModel {
     private zipcode: string;
     private city: string;
 
+    private strategy: OutputInterface<CompanyModel> = new AllStrategy();
+
+    public constructor(id: number) {
+        this.id = id;
+    }
+
     public getId(): number {
         return this.id;
     }
 
     public setId(id: number) {
-        this.id = id;
+        if (this.id == null) {
+            this.id = id;
+        }
+    }
+
+    public setStrategy(strategy: OutputInterface<CompanyModel>) {
+        this.strategy = strategy;
     }
 
     /**
@@ -41,7 +56,7 @@ export class CompanyModel {
     }
 
     public getName(): string {
-        return this.name;
+        return this.name.toUpperCase();
     }
 
     public setZipCode(zipcode: string) {
@@ -60,11 +75,22 @@ export class CompanyModel {
         return this.city;
     }
 
-    public toString(): string {
-        let output: string = '<div class="col-12 click" data-rel="' + this.id + '">';
-        output += '<h2><i class="icon-office"></i> ' + this.name + '</h2>';
-        output += this.address + '<br>';
-        output += this.zipcode + ' <em>' + this.city + '</em></div>';
+    public useOutputStrategy(): JQuery {
+        return this.strategy.output(this);
+    }
+
+    public toString(howTo: number): string {
+        let output: string;
+        if (howTo == 1) {
+            output = '<div class="col-12 click" data-rel="' + this.id + '">';
+            output += '<h2><i class="icon-office"></i> ' + this.name + '</h2>';
+            output += this.address + '<br>';
+            output += this.zipcode + ' <em>' + this.city + '</em></div>';
+        } else if (howTo == 2) {
+            output = '<h2><i class="icon-office"></i> ' + this.name + '</h2>';
+        } else if (howTo == 3) {
+            output = '<h2><i class="icon-office"></i> ' + this.name + ' ' + this.zipcode + '</h2>';
+        }
 
         return output;
     }
