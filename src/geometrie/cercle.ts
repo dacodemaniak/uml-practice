@@ -17,4 +17,8 @@ export class Cercle extends dalleFactory {
     public setDiametre(diametre: number): void {
         this.diametre = diametre;
     }
+
+    public compareTo(object: Cercle): number {
+        return this.diametre === object.diametre ? 0 : -1;
+    }
 }

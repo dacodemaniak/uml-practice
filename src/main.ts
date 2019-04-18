@@ -10,6 +10,8 @@ import { AllStrategy } from './models/strategies/all-strategy';
 import { Carre } from './geometrie/carre';
 import { Cercle } from './geometrie/cercle';
 import { Triangle } from './geometrie/triangle';
+import { Table } from './geometrie/table';
+import { Paintable } from './geometrie/paintable-interface';
 
 /**
  * @name main
@@ -61,6 +63,15 @@ console.log('Nombre de sociétés : ' + companyRepository.getSize());
  const grandCarre: Carre = new Carre();
  grandCarre.dessiner();
 
+ const unAutreGrandCarre: Carre = new Carre();
+
+ // Je veux comparer les deux carrés
+ if (grandCarre.compareTo(unAutreGrandCarre) === 0) {
+     console.log('Les deux carrés sont identiques');
+ } else {
+     console.log('Les deux carrés sont différents');
+ }
+
  const petitCarre: Carre = new Carre();
  // Demande à Robert de recalibrer la machine à 50
  petitCarre.setSideLength(50);
@@ -80,3 +91,18 @@ console.log('Nombre de sociétés : ' + companyRepository.getSize());
  const dalleTriangulaire: Triangle = new Triangle();
  dalleTriangulaire.setKind('Equilateral');
  dalleTriangulaire.dessiner();
+
+ const laTable: Table = new Table(100, 100);
+
+ // Maurice, c'est à toi de jouer, je t'envoie le chariot avec les trucs à peindre
+ const toCabine: Array<Paintable> = new Array<Paintable>();
+ toCabine.push(petitCarre);
+ toCabine.push(jeSuisUnCercle);
+ toCabine.push(dalleCirculaire75);
+ toCabine.push(dalleTriangulaire);
+ toCabine.push(laTable);
+
+ // Vas-y Maurice... let's paint it black
+ toCabine.forEach((object: any) => {
+    object.paint('black');
+ });

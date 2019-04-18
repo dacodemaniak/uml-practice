@@ -17,4 +17,8 @@ export class Carre extends dalleFactory {
     public setSideLength(side: number): void {
         this.sideLength = side;
     }
+
+    public compareTo(object: Carre): number {
+        return this.sideLength === object.sideLength ? 0 : -1;
+    }
 }
