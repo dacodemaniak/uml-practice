@@ -9,7 +9,7 @@ export class Catalog {
         return this;
     }
 
-    public catalogue(): void {
+    public catalogue(): string {
         let listing: string;
 
         this.catalog.forEach((vehicule) => {
@@ -20,9 +20,9 @@ export class Catalog {
             }
             listing += vehicule.getName() + ' Prix catalogue : ' + vehicule.getSalePrice() + '\n'; 
         });
-        console.log(listing);
+        return listing;
     }
-    
+
     public getMargeTotale(): number {
         let marge: number = 0;
         this.catalog.forEach((vehicule) => {

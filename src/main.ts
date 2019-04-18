@@ -127,5 +127,5 @@ console.log('Nombre de sociétés : ' + companyRepository.getSize());
     .setSalePrice(5000)
     .setManufacturingPrice(1500)
  );
- catalogue.catalogue();
+ console.log(catalogue.catalogue());
  console.log('Marge totale : ' + catalogue.getMargeTotale());
