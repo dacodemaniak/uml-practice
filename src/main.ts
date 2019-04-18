@@ -12,6 +12,8 @@ import { Cercle } from './geometrie/cercle';
 import { Triangle } from './geometrie/triangle';
 import { Table } from './geometrie/table';
 import { Paintable } from './geometrie/paintable-interface';
+import { Catalog } from './vehicules/catalogue-repository';
+import { VehiculeFactory } from './vehicules/vehicule-factory';
 
 /**
  * @name main
@@ -106,3 +108,24 @@ console.log('Nombre de sociétés : ' + companyRepository.getSize());
  toCabine.forEach((object: any) => {
     object.paint('black');
  });
+
+ // Usine à véhicules
+ const catalogue: Catalog = new Catalog();
+ catalogue
+ .add(
+     (VehiculeFactory.createVehicule('Voiture', '208'))
+        .setSalePrice(15000)
+        .setManufacturingPrice(5000)
+ )
+ .add(
+    (VehiculeFactory.createVehicule('Voiture', '308'))
+        .setSalePrice(23000)
+        .setManufacturingPrice(5500)   
+ )
+ .add(
+    (VehiculeFactory.createVehicule('Moto', 'Varadero'))
+    .setSalePrice(5000)
+    .setManufacturingPrice(1500)
+ );
+ catalogue.catalogue();
+ console.log('Marge totale : ' + catalogue.getMargeTotale());

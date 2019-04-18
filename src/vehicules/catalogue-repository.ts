@@ -1,0 +1,33 @@
+import { Vehicule } from "./vehicule";
+import { Voiture } from "./voiture";
+
+export class Catalog {
+    private catalog: Array<Vehicule> = new Array<Vehicule>();
+
+    public add(vehicule: Vehicule): Catalog {
+        this.catalog.push(vehicule);
+        return this;
+    }
+
+    public catalogue(): void {
+        let listing: string;
+
+        this.catalog.forEach((vehicule) => {
+            if (vehicule instanceof Voiture) {
+                listing += 'Voiture ';
+            } else {
+                listing += 'Moto ';
+            }
+            listing += vehicule.getName() + ' Prix catalogue : ' + vehicule.getSalePrice() + '\n'; 
+        });
+        console.log(listing);
+    }
+    
+    public getMargeTotale(): number {
+        let marge: number = 0;
+        this.catalog.forEach((vehicule) => {
+            marge += vehicule.getMarge();
+        });
+        return marge;
+    }
+}
