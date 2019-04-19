@@ -1,3 +1,4 @@
-export interface Controller {
+export interface ControllerInterface {
     loadView(): void;
+    setListeners(): void;
 }
