@@ -14,6 +14,10 @@ import { Table } from './geometrie/table';
 import { Paintable } from './geometrie/paintable-interface';
 import { Catalog } from './vehicules/catalogue-repository';
 import { VehiculeFactory } from './vehicules/vehicule-factory';
+import { CompanyController } from './modules/company/company-controller';
+import { Voiture } from './vehicules/voiture';
+import { Vehicule } from './vehicules/vehicule';
+import { Moto } from './vehicules/moto';
 
 /**
  * @name main
@@ -109,23 +113,12 @@ console.log('Nombre de sociétés : ' + companyRepository.getSize());
     object.paint('black');
  });
 
+
  // Usine à véhicules
  const catalogue: Catalog = new Catalog();
- catalogue
- .add(
-     (VehiculeFactory.createVehicule('Voiture', '208'))
-        .setSalePrice(15000)
-        .setManufacturingPrice(5000)
- )
- .add(
-    (VehiculeFactory.createVehicule('Voiture', '308'))
-        .setSalePrice(23000)
-        .setManufacturingPrice(5500)   
- )
- .add(
-    (VehiculeFactory.createVehicule('Moto', 'Varadero'))
-    .setSalePrice(5000)
-    .setManufacturingPrice(1500)
- );
+ 
  console.log(catalogue.catalogue());
  console.log('Marge totale : ' + catalogue.getMargeTotale());
+
+ // Charge le formulaire de gestion des sociétés
+ const companyForm: CompanyController = new CompanyController();
